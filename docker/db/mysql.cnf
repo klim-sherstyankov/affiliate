@@ -1,0 +1,11 @@
+[mysql]
+default-character-set=utf8
+
+[mysqld]
+default_authentication_plugin=mysql_native_password
+sql-mode="STRICT_ALL_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION"
+character-set-server=utf8mb4
+collation-server=utf8mb4_unicode_ci
+lower_case_table_names=0
+general_log=1
+general_log_file='mysql_general.log'

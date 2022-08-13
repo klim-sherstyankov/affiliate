@@ -1,0 +1,25 @@
+version: "3.7"
+
+volumes:
+    app_volume:
+
+services:
+    php:
+        container_name: ${COMPOSE_PROJECT_NAME}-php
+        volumes:
+            - app_volume:/app
+
+    nginx:
+        container_name: ${COMPOSE_PROJECT_NAME}-nginx
+        build:
+            context: ./..
+            dockerfile: ./docker/nginx/Dockerfile
+        volumes:
+            - app_volume:/app
+        environment:
+            DOMAIN: ${DOMAIN}
+            PROJECT_NAME: ${PROJECT_NAME}
+            DELIMITER: ${DELIMITER:-}
+            BRANCH: ${BRANCH:-}
+            COMPOSE_PROJECT_NAME: ${COMPOSE_PROJECT_NAME}
+            PHP_FPM_HOST: ${COMPOSE_PROJECT_NAME}-php

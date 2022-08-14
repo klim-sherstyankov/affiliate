@@ -57,7 +57,6 @@ services:
             - ./php/php.ini:/usr/local/etc/php/conf.d/custom-php.ini
         environment:
             PHP_IDE_CONFIG: serverName=affiliate
-            COMPOSER_AUTH: ${COMPOSER_AUTH}
         tty: true
 
     nginx:

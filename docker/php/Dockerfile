@@ -21,9 +21,6 @@ RUN mkdir /root/.ssh/ && touch /root/.ssh/known_hosts
 RUN ssh-keyscan -t rsa github.com >> /etc/ssh/ssh_known_hosts 2> /dev/null
 RUN ssh-keyscan -t rsa bitbucket.org >> /etc/ssh/ssh_known_hosts 2> /dev/null
 
-ARG COMPOSER_AUTH
-ENV COMPOSER_AUTH=${COMPOSER_AUTH}
-
 RUN composer install --no-scripts --no-autoloader --no-dev
 
 #COPY migrations migrations/

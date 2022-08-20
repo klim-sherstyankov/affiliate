@@ -1,0 +1,55 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content_header %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.4/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
+
+{% endblock %}
+
+{% block main %}
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mp-12">
+            <canvas id="clickAll" style="width:95%;max-height:500px;margin-right:5%"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.js" integrity="sha512-b3xr4frvDIeyC3gqR1/iOi6T+m3pLlQyXNuvn5FiRrrKiMUJK3du2QqZbCywH6JxS5EOfW0DY0M6WwdXFbCBLQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        let COLORS = [];
+        while (COLORS.length < 60) {
+            COLORS.push(`rgb(${rand(0, 255)}, ${rand(0, 255)}, ${rand(0, 255)})`);
+        }
+
+        // random number generator
+        function rand(frm, to) {
+            return ~~(Math.random() * (to - frm)) + frm;
+        }
+
+        let ctx = document.getElementById('clickAll').getContext('2d');
+        let applicationAll = new Chart(ctx, {
+            data: {
+                datasets: [{
+                    type: 'bar',
+                    label: 'Всего продаж',
+                    data: [0, 10, 5, 2, 20, 30, 45],
+                    borderColor: COLORS,
+                    backgroundColor: COLORS
+                }],
+                labels: [0, 10, 5, 2, 20, 30, 45]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Клики за последние 30 дней'
+                    }
+                }
+            }
+        });
+    </script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.4/js/bootstrap-switch.min.js"></script>
+{% endblock %}

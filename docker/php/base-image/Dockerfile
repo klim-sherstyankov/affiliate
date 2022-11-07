@@ -1,10 +1,7 @@
-FROM php:8.0.17-fpm as build
+FROM php:8.1-fpm as build
 
 #set timezone
 ENV TIMEZONE=Europe/Moscow
-RUN ln -snf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
-    && echo ${TIMEZONE} > /etc/timezone \
-    && printf '[PHP]\ndate.timezone = "%s"\n', ${TIMEZONE} > /usr/local/etc/php/conf.d/tzone.ini
 
 RUN apt-get update \
     && apt-get install -y \
@@ -27,6 +24,8 @@ RUN apt-get update \
         zip \
         vim \
         mc \
+        php-mysql \
+        php-pdo \
         nano \
         curl \
     && pecl install imagick apcu xdebug

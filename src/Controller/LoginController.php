@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Exception;
+use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -27,8 +28,8 @@ class LoginController extends AbstractController
      * @throws Exception
      */
     #[Route('/logout', name: 'app_logout', methods: ['GET'])]
-    public function logout()
+    public function logout(): void
     {
-        throw new Exception('logout');
+        throw new RuntimeException('logout');
     }
 }

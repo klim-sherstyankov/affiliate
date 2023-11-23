@@ -2,3 +2,4 @@ vendor/
 .idea/
 docker/.data/*
 .env
+.DS_Store

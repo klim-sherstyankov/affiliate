@@ -1,7 +1,7 @@
 ARG APP_ENV=prod
 ARG BUILD_ENV=local
 
-FROM php:8.1-fpm as build
+FROM php:8.2-fpm as build
 
 #set timezone
 ENV TIMEZONE=Europe/Moscow

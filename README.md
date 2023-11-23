@@ -1,8 +1,8 @@
 # affiliate
 
 Стэк:
-- symfony 6.0
-- php 8.0
+- symfony 6.3
+- php 8.2
 - mysql 8
 - clickhouse
 

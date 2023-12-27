@@ -2,8 +2,8 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Items;
 use App\Entity\User;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,15 +18,6 @@ class AdminController extends AbstractDashboardController
         ]);
     }
 
-    public function configureDashboard(): Dashboard
-    {
-        return Dashboard::new()
-            ->setFaviconPath('favicon.svg')
-            ->renderContentMaximized()
-            ->generateRelativeUrls()
-            ->setTitle('App');
-    }
-
     public function configureMenuItems(): iterable
     {
         return [
@@ -34,6 +25,7 @@ class AdminController extends AbstractDashboardController
             MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
             MenuItem::section('Work'),
             MenuItem::linkToCrud('User', 'fa fa-tags', User::class),
+            MenuItem::linkToCrud('Items', 'fa fa-tags', Items::class),
             MenuItem::linkToLogout('Logout', 'fa fa-exit'),
         ];
     }

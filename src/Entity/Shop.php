@@ -31,6 +31,11 @@ class Shop
     #[ORM\OneToMany(mappedBy: 'shopId', targetEntity: Items::class)]
     private Collection $items;
 
+    public function __toString(): string
+    {
+        return $this->getName();
+    }
+
     public function __construct()
     {
         $this->items = new ArrayCollection();

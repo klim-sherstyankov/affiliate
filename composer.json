@@ -21,6 +21,7 @@
         "symfony/proxy-manager-bridge": "6.*",
         "symfony/runtime": "6.*",
         "symfony/security-bundle": "6.*",
+        "symfony/serializer": "6.*",
         "symfony/yaml": "6.*",
         "symfonycasts/verify-email-bundle": "^1.11"
     }

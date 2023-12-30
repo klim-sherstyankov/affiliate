@@ -1,5 +1,6 @@
 vendor/
 .idea/
+composer.lock
 docker/.data/*
 .env
 .DS_Store

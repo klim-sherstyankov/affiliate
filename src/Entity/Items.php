@@ -21,27 +21,36 @@ class Items
     private ?string $url = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $short_name = null;
+    private ?string $shortName = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
     #[ORM\Column]
-    private ?int $price_off_percent = null;
+    private ?int $priceOffPercent = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $dt_create = null;
+    private ?\DateTimeInterface $dtCreate = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $dt_update = null;
+    private ?\DateTimeInterface $dtUpdate = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $shopName = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $salePrice = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
 
     public function __construct()
     {
-        if (null === $this->dt_create) {
-            $this->dt_create = new \DateTime();
+        if (null === $this->dtCreate) {
+            $this->dtCreate = new \DateTime();
         }
 
-        $this->dt_update = new \DateTime();
+        $this->dtUpdate = new \DateTime();
     }
 
     public function getId(): ?int
@@ -82,12 +91,12 @@ class Items
 
     public function getShortName(): ?string
     {
-        return $this->short_name;
+        return $this->shortName;
     }
 
-    public function setShortName(string $short_name): static
+    public function setShortName(string $shortName): static
     {
-        $this->short_name = $short_name;
+        $this->shortName = $shortName;
 
         return $this;
     }
@@ -106,36 +115,72 @@ class Items
 
     public function getPriceOffPercent(): ?int
     {
-        return $this->price_off_percent;
+        return $this->priceOffPercent;
     }
 
-    public function setPriceOffPercent(int $price_off_percent): static
+    public function setPriceOffPercent(int $priceOffPercent): static
     {
-        $this->price_off_percent = $price_off_percent;
+        $this->priceOffPercent = $priceOffPercent;
 
         return $this;
     }
 
     public function getDtCreate(): ?\DateTimeInterface
     {
-        return $this->dt_create;
+        return $this->dtCreate;
     }
 
-    public function setDtCreate(\DateTimeInterface $dt_create): static
+    public function setDtCreate(\DateTimeInterface $dtCreate): static
     {
-        $this->dt_create = $dt_create;
+        $this->dtCreate = $dtCreate;
 
         return $this;
     }
 
     public function getDtUpdate(): ?\DateTimeInterface
     {
-        return $this->dt_update;
+        return $this->dtUpdate;
     }
 
-    public function setDtUpdate(\DateTimeInterface $dt_update): static
+    public function setDtUpdate(\DateTimeInterface $dtUpdate): static
     {
-        $this->dt_update = $dt_update;
+        $this->dtUpdate = $dtUpdate;
+
+        return $this;
+    }
+
+    public function getShopName(): ?string
+    {
+        return $this->shopName;
+    }
+
+    public function setShopName(?string $shopName): static
+    {
+        $this->shopName = $shopName;
+
+        return $this;
+    }
+
+    public function getSalePrice(): ?string
+    {
+        return $this->salePrice;
+    }
+
+    public function setSalePrice(string $salePrice): static
+    {
+        $this->salePrice = $salePrice;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): static
+    {
+        $this->image = $image;
 
         return $this;
     }

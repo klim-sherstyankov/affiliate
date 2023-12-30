@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Items;
+use App\Entity\Shop;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -25,6 +26,14 @@ class ItemsFixtures extends Fixture
         $product->setImage('https://www.letu.ru/common/img/pim/2023/09/EX_0389937b-6cf0-4ffd-bc46-fc368b99e9ce.jpg');
         $product->setShopName('Летуаль');
         $product->setSalePrice(8299);
+
+        $shop = new Shop();
+        $shop->setUrl('https://www.letu.ru/');
+        $shop->setImage('https://www.letu.ru/common/img/logo/letu-logo.svg');
+        $shop->setName('letu');
+        $shop->setDescription('letu');
+        $manager->persist($shop);
+        $product->setShopId($shop);
         $manager->persist($product);
 
         $manager->flush();

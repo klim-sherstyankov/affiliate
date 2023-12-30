@@ -5,6 +5,7 @@ namespace App\Controller\Api;
 use App\Entity\Items;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -29,7 +30,8 @@ class ItemController extends AbstractController
             $result['price'] = $item->getPrice();
             $result['shortName'] = $item->getShortName();
             $result['url'] = $item->getUrl();
-            $result['shopName'] = $item->getShopName();
+            $result['shopName'] = $item->getShopId()?->getName();
+            $result['shopImg'] = $item->getShopId()?->getImage();
             $result['description'] = $item->getDescription();
             $result['priceOffPercent'] = $item->getPriceOffPercent();
             $result['salePrice'] = $item->getSalePrice();
@@ -39,5 +41,28 @@ class ItemController extends AbstractController
         }
 
         return $this->json($data);
+    }
+
+    #[Route('/api/item/{id}', name: 'app_item')]
+    public function getItem(Request $request): Response
+    {
+        $result = [];
+        /** @var Items $item */
+        $item = $this->em->getRepository(Items::class)->findOneBy(['id' => $request->get('id')]);
+
+        if (null !== $item) {
+            $result['id'] = $item->getId();
+            $result['price'] = $item->getPrice();
+            $result['shortName'] = $item->getShortName();
+            $result['url'] = $item->getUrl();
+            $result['shopName'] = $item->getShopId()?->getName();
+            $result['shopImg'] = $item->getShopId()?->getImage();
+            $result['description'] = $item->getDescription();
+            $result['priceOffPercent'] = $item->getPriceOffPercent();
+            $result['salePrice'] = $item->getSalePrice();
+            $result['image'] = $item->getImage();
+        }
+
+        return $this->json($result);
     }
 }

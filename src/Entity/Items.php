@@ -44,6 +44,9 @@ class Items
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
+    #[ORM\ManyToOne(inversedBy: 'items')]
+    private ?Shop $shopId = null;
+
     public function __construct()
     {
         if (null === $this->dtCreate) {
@@ -181,6 +184,18 @@ class Items
     public function setImage(?string $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getShopId(): ?Shop
+    {
+        return $this->shopId;
+    }
+
+    public function setShopId(?Shop $shopId): static
+    {
+        $this->shopId = $shopId;
 
         return $this;
     }

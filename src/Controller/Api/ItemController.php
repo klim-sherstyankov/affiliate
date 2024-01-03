@@ -48,7 +48,7 @@ class ItemController extends AbstractController
     {
         $result = [];
         /** @var Items $item */
-        $item = $this->em->getRepository(Items::class)->findOneBy(['id' => $request->get('id')], ['id' => 'ASC']);
+        $item = $this->em->getRepository(Items::class)->findOneBy(['id' => $request->get('id')], ['id' => 'DESC']);
 
         if (null !== $item) {
             $result['id'] = $item->getId();

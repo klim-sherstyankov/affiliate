@@ -22,6 +22,7 @@ class ItemsCrudController extends AbstractCrudController
         return [
             IdField::new('id'),
             TextField::new('shortName'),
+            TextField::new('url'),
             TextEditorField::new('description'),
             IntegerField::new('price'),
             TextField::new('salePrice'),

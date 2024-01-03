@@ -22,7 +22,7 @@ class ItemController extends AbstractController
     public function index(): Response
     {
         $data = [];
-        $items = $this->em->getRepository(Items::class)->findAll();
+        $items = $this->em->getRepository(Items::class)->findBy([], ['id' => 'DESC']);
 
         /** @var Items $item */
         foreach ($items as $item) {
@@ -48,7 +48,7 @@ class ItemController extends AbstractController
     {
         $result = [];
         /** @var Items $item */
-        $item = $this->em->getRepository(Items::class)->findOneBy(['id' => $request->get('id')], ['id' => 'DESC']);
+        $item = $this->em->getRepository(Items::class)->findOneBy(['id' => $request->get('id')]);
 
         if (null !== $item) {
             $result['id'] = $item->getId();

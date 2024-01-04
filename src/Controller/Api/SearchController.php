@@ -2,6 +2,7 @@
 
 namespace App\Controller\Api;
 
+use App\Entity\Items;
 use App\Service\ItemsService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -9,21 +10,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ItemController extends AbstractController
+class SearchController extends AbstractController
 {
     public function __construct(protected EntityManagerInterface $em, protected ItemsService $itemsService)
     {
     }
 
-    #[Route('/api/items', name: 'app_items')]
-    public function getItems(): Response
+    #[Route('/api/search', name: 'app_search_items')]
+    public function getSearchItems(Request $request): Response
     {
-        return $this->json($this->itemsService->getItems());
-    }
-
-    #[Route('/api/item/{id}', name: 'app_item')]
-    public function getItem(Request $request): Response
-    {
-        return $this->json($this->itemsService->getItem($request->get('id')));
+        return $this->json($this->itemsService->getSearchItems($request->get('s')));
     }
 }

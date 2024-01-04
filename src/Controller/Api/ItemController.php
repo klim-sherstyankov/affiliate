@@ -36,6 +36,8 @@ class ItemController extends AbstractController
             $result['priceOffPercent'] = $item->getPriceOffPercent();
             $result['salePrice'] = $item->getSalePrice();
             $result['image'] = $item->getImage();
+            $result['feature'] = $item->getFeature();
+            $result['category'] = $item->getCategory()?->getName();
 
             $data[] = $result;
         }
@@ -61,6 +63,8 @@ class ItemController extends AbstractController
             $result['priceOffPercent'] = $item->getPriceOffPercent();
             $result['salePrice'] = $item->getSalePrice();
             $result['image'] = $item->getImage();
+            $result['feature'] = $item->getFeature();
+            $result['category'] = $item->getCategory()?->getName();
         }
 
         return $this->json($result);

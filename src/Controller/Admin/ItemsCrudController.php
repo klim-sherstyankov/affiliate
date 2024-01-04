@@ -25,8 +25,10 @@ class ItemsCrudController extends AbstractCrudController
             IntegerField::new('price'),
             IntegerField::new('salePrice'),
             TextField::new('image'),
+            TextEditorField::new('feature')->setLabel('Особенности товара'),
             IntegerField::new('priceOffPercent'),
             AssociationField::new('shopId'),
+            AssociationField::new('category'),
         ];
     }
 }

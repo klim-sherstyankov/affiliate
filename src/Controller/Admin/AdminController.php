@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Category;
 use App\Entity\Items;
 use App\Entity\Shop;
 use App\Entity\User;
@@ -28,6 +29,7 @@ class AdminController extends AbstractDashboardController
             MenuItem::linkToCrud('User', 'fa fa-tags', User::class),
             MenuItem::linkToCrud('Items', 'fa fa-tags', Items::class),
             MenuItem::linkToCrud('Shop', 'fa fa-tags', Shop::class),
+            MenuItem::linkToCrud('Category', 'fa fa-tags', Category::class),
             MenuItem::linkToLogout('Logout', 'fa fa-exit'),
         ];
     }

@@ -21,20 +21,24 @@ class ItemsService
 
         /** @var Items $item */
         foreach ($items as $item) {
-            $result['id'] = $item->getId();
-            $result['price'] = $item->getPrice();
-            $result['shortName'] = $item->getShortName();
-            $result['url'] = $item->getUrl();
-            $result['shopName'] = $item->getShopId()?->getName();
-            $result['shopImg'] = $item->getShopId()?->getImage();
-            $result['description'] = $item->getDescription();
-            $result['priceOffPercent'] = $item->getPriceOffPercent();
-            $result['salePrice'] = $item->getSalePrice();
-            $result['image'] = $item->getImage();
-            $result['feature'] = $item->getFeature();
-            $result['category'] = $item->getCategory()?->getName();
+            $data[] = $this->getResultArray($item);
+        }
 
-            $data[] = $result;
+        return $data;
+    }
+
+    public function getShopItems(Request $request): array
+    {
+        $data = [];
+        $limit = $request->get('limit', 30);
+        $offset = $request->get('offset', 0);
+        $shopId = $request->get('shopId');
+
+        $items = $this->em->getRepository(Items::class)->findBy(['shopId' => $shopId], ['id' => 'DESC'], $limit, $offset);
+
+        /** @var Items $item */
+        foreach ($items as $item) {
+            $data[] = $this->getResultArray($item);
         }
 
         return $data;
@@ -47,20 +51,7 @@ class ItemsService
 
         /** @var Items $item */
         foreach ($items as $item) {
-            $result['id'] = $item->getId();
-            $result['price'] = $item->getPrice();
-            $result['shortName'] = $item->getShortName();
-            $result['url'] = $item->getUrl();
-            $result['shopName'] = $item->getShopId()?->getName();
-            $result['shopImg'] = $item->getShopId()?->getImage();
-            $result['description'] = $item->getDescription();
-            $result['priceOffPercent'] = $item->getPriceOffPercent();
-            $result['salePrice'] = $item->getSalePrice();
-            $result['image'] = $item->getImage();
-            $result['feature'] = $item->getFeature();
-            $result['category'] = $item->getCategory()?->getName();
-
-            $data[] = $result;
+            $data[] = $this->getResultArray($item);
         }
 
         return $data;
@@ -68,26 +59,10 @@ class ItemsService
 
     public function getItem(mixed $id): array
     {
-        $result = [];
         /** @var Items $item */
         $item = $this->em->getRepository(Items::class)->findOneBy(['id' => $id]);
 
-        if (null !== $item) {
-            $result['id'] = $item->getId();
-            $result['price'] = $item->getPrice();
-            $result['shortName'] = $item->getShortName();
-            $result['url'] = $item->getUrl();
-            $result['shopName'] = $item->getShopId()?->getName();
-            $result['shopImg'] = $item->getShopId()?->getImage();
-            $result['description'] = $item->getDescription();
-            $result['priceOffPercent'] = $item->getPriceOffPercent();
-            $result['salePrice'] = $item->getSalePrice();
-            $result['image'] = $item->getImage();
-            $result['feature'] = $item->getFeature();
-            $result['category'] = $item->getCategory()?->getName();
-        }
-
-        return $result;
+        return null !== $item ? $this->getResultArray($item) : [];
     }
 
     public function getSearchItems(mixed $search): array
@@ -97,22 +72,28 @@ class ItemsService
         $items = $this->em->getRepository(Items::class)->findBySearch($search);
 
         foreach ($items as $item) {
-            $result['id'] = $item->getId();
-            $result['price'] = $item->getPrice();
-            $result['shortName'] = $item->getShortName();
-            $result['url'] = $item->getUrl();
-            $result['shopName'] = $item->getShopId()?->getName();
-            $result['shopImg'] = $item->getShopId()?->getImage();
-            $result['description'] = $item->getDescription();
-            $result['priceOffPercent'] = $item->getPriceOffPercent();
-            $result['salePrice'] = $item->getSalePrice();
-            $result['image'] = $item->getImage();
-            $result['feature'] = $item->getFeature();
-            $result['category'] = $item->getCategory()?->getName();
-
-            $data[] = $result;
+            $data[] = $this->getResultArray($item);
         }
 
         return $data;
+    }
+
+    public function getResultArray(Items $item): array
+    {
+        $result['id'] = $item->getId();
+        $result['price'] = $item->getPrice();
+        $result['shortName'] = $item->getShortName();
+        $result['url'] = $item->getUrl();
+        $result['shopId'] = $item->getShopId()?->getId();
+        $result['shopName'] = $item->getShopId()?->getName();
+        $result['shopImg'] = $item->getShopId()?->getImage();
+        $result['description'] = $item->getDescription();
+        $result['priceOffPercent'] = $item->getPriceOffPercent();
+        $result['salePrice'] = $item->getSalePrice();
+        $result['image'] = $item->getImage();
+        $result['feature'] = $item->getFeature();
+        $result['category'] = $item->getCategory()?->getName();
+
+        return $result;
     }
 }

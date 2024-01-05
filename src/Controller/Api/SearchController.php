@@ -2,7 +2,6 @@
 
 namespace App\Controller\Api;
 
-use App\Entity\Items;
 use App\Service\ItemsService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

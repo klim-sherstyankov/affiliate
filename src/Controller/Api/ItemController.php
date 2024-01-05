@@ -16,9 +16,9 @@ class ItemController extends AbstractController
     }
 
     #[Route('/api/items', name: 'app_items')]
-    public function getItems(): Response
+    public function getItems(Request $request): Response
     {
-        return $this->json($this->itemsService->getItems());
+        return $this->json($this->itemsService->getItems($request));
     }
 
     #[Route('/api/item/{id}', name: 'app_item')]

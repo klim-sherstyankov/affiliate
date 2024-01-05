@@ -2,7 +2,6 @@
 
 namespace App\Service;
 
-use App\Entity\Items;
 use App\Entity\Shop;
 use Doctrine\ORM\EntityManagerInterface;
 

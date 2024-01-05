@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\Entity\Items;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class ItemsService
 {
@@ -11,10 +12,12 @@ class ItemsService
     {
     }
 
-    public function getItems(): array
+    public function getItems(Request $request): array
     {
         $data = [];
-        $items = $this->em->getRepository(Items::class)->findBy([], ['id' => 'DESC']);
+        $limit = $request->get('limit', 30);
+        $offset = $request->get('offset', 0);
+        $items = $this->em->getRepository(Items::class)->findBy([], ['id' => 'DESC'], $limit, $offset);
 
         /** @var Items $item */
         foreach ($items as $item) {

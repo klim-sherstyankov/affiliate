@@ -39,7 +39,7 @@ class ItemsService
 
     public function getItem(mixed $id): array
     {
-        $data = [];
+        $result = [];
         /** @var Items $item */
         $item = $this->em->getRepository(Items::class)->findOneBy(['id' => $id]);
 
@@ -56,11 +56,9 @@ class ItemsService
             $result['image'] = $item->getImage();
             $result['feature'] = $item->getFeature();
             $result['category'] = $item->getCategory()?->getName();
-
-            $data[] = $result;
         }
 
-        return $data;
+        return $result;
     }
 
     public function getSearchItems(mixed $search): array

@@ -26,4 +26,10 @@ class ItemController extends AbstractController
     {
         return $this->json($this->itemsService->getItem($request->get('id')));
     }
+
+    #[Route('/api/alike', name: 'app_alike')]
+    public function getAlike(Request $request): Response
+    {
+        return $this->json($this->itemsService->getAlike());
+    }
 }

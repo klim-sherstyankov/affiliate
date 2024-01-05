@@ -37,6 +37,32 @@ class ItemsService
         return $data;
     }
 
+    public function getAlike(): array
+    {
+        $data = [];
+        $items = $this->em->getRepository(Items::class)->findBy([], ['id' => 'DESC'], 5);
+
+        /** @var Items $item */
+        foreach ($items as $item) {
+            $result['id'] = $item->getId();
+            $result['price'] = $item->getPrice();
+            $result['shortName'] = $item->getShortName();
+            $result['url'] = $item->getUrl();
+            $result['shopName'] = $item->getShopId()?->getName();
+            $result['shopImg'] = $item->getShopId()?->getImage();
+            $result['description'] = $item->getDescription();
+            $result['priceOffPercent'] = $item->getPriceOffPercent();
+            $result['salePrice'] = $item->getSalePrice();
+            $result['image'] = $item->getImage();
+            $result['feature'] = $item->getFeature();
+            $result['category'] = $item->getCategory()?->getName();
+
+            $data[] = $result;
+        }
+
+        return $data;
+    }
+
     public function getItem(mixed $id): array
     {
         $result = [];

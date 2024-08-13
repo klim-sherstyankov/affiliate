@@ -1,4 +1,4 @@
-# affiliate
+# affiliate site for all 
 
 Стэк:
 - symfony 6.3

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="verify-admitad" content="60a9ca172f" />
+    <link rel="icon" href="./svg/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./fonts/fonts.css" />
+    <link rel="stylesheet" href="./style/variables.css" />
+    <link rel="stylesheet" href="./style/global.css" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <title>Скидки тут</title>
+  </head>
+  <body class="page">
+    <header class="header">
+      <div class="header__wrapper">
+        <div class="header__layout">
+          <details class="mobile__header__menu">
+            <summary class="mobile__header__menu-title">
+              <img
+                src="./svg/icon_menu.svg"
+                alt="Графический элемент,
+              указывающий на возможность раскрытия меню"
+                class="mobile__header__menu-image"
+              />
+            </summary>
+          </details>
+          <a href="/" class="header__logo"
+            ><img
+              src="./svg/logo1.svg"
+              alt="Основной логотип"
+              class="header__logo-img"
+          /></a>
+          <a href="/" class="header__link"
+            ><h1 class="header__title">
+              Скидки - <span class="accent">тут</span>
+            </h1></a
+          >
+          <details class="header__shop-list">
+            <summary class="header__shop-title">
+              <span class="header__shop-title-text">Магазины</span
+              ><img
+                src="./svg/icon_caret.svg"
+                alt="Графический элемент, указывающий на возможность раскрытия списка"
+                class="header__shop-title-arrow"
+              />
+            </summary>
+            <ul class="header__shop-menu">
+              <li class="header__shop-item">
+                <p class="header__shop-text">Магазин “Товары для пушистиков”</p>
+                <img
+                  src="./images/shop_list.png"
+                  alt="Иконка магазина"
+                  class="header__shop-image"
+                />
+              </li>
+              <li class="header__shop-item">
+                <p class="header__shop-text">Магазин “Товары для пушистиков”</p>
+                <img
+                  src="./images/shop_list.png"
+                  alt="Иконка магазина"
+                  class="header__shop-image"
+                />
+              </li>
+              <li class="header__shop-item">
+                <p class="header__shop-text">Магазин “Товары для пушистиков”</p>
+                <img
+                  src="./images/shop_list.png"
+                  alt="Иконка магазина"
+                  class="header__shop-image"
+                />
+              </li>
+            </ul>
+          </details>
+          <form action="" class="header__search-form" method="get">
+            <input
+              type="search"
+              class="header__search-field"
+              placeholder="Поиск на сайте..."
+            />
+          </form>
+        </div>
+      </div>
+      <div class="header__menu-wrapper">
+        <nav class="header__menu">
+          <ul class="header__menu-list">
+            <li class="header__menu-item">
+              Хит<img
+                src="./svg/icon_fire.svg"
+                alt="Иконка пламени"
+                class="header__menu-icon"
+                aria-hidden="true"
+              />
+            </li>
+            <li class="header__menu-item">Новинки</li>
+          </ul>
+          <button class="header__menu-sort_button" type="button">
+            <img
+              src="./svg/icon_sort_down.svg"
+              alt="Иконка сортировки"
+              class="header__menu-sort-icon"
+              aria-hidden="true"
+            />Сортировка
+          </button>
+        </nav>
+      </div>
+    </header>
+    <main class="main" id="main">
+      <ul class="card-list"></ul>
+    </main>
+    <footer class="footer">
+      <div class="footer__layout">
+        <div class="footer__forms-wrapper">
+          <button class="footer__contact-us">Связаться с нами</button>
+          <form action="" class="footer__subscription-form">
+            <label for="footer__email" class="footer__email-label"
+              >Подписка на рассылку</label
+            >
+            <input
+              type="email"
+              id="footer__email"
+              class="footer__email"
+              placeholder="Введите Email"
+            />
+          </form>
+        </div>
+        <div class="footer__about-us-wrapper">
+          <ul class="footer__about-us-list">
+            <li class="footer__about-us-item">О нас</li>
+            <li class="footer__about-us-item">Продавать с нами</li>
+            <li class="footer__about-us-item">Клубная карта</li>
+            <li class="footer__about-us-item">Подарочные сертификаты</li>
+            <li class="footer__about-us-item">Найти магазин</li>
+            <li class="footer__about-us-item">Карьера и вакансии</li>
+          </ul>
+        </div>
+        <div class="footer__logo">
+          <img
+            src="./svg/heart_footer.svg"
+            alt="логотип в виде сердца"
+            class="footer__logo-image"
+          />
+        </div>
+      </div>
+    </footer>
+    <menu class="mobile__menu">
+      <button class="mobile__menu-item">
+        <img
+          src="./svg/mobile_home.svg"
+          alt="Иконка домашней страниы"
+          class="mobile__menu-image"
+        /></button
+      ><button class="mobile__menu-item">
+        <img
+          src="./svg/mobile_fire.svg"
+          alt="Иконка домашней страниы"
+          class="mobile__menu-image"
+        /></button
+      ><button class="mobile__menu-item">
+        <img
+          src="./svg/mobile_new.svg"
+          alt="Иконка домашней страниы"
+          class="mobile__menu-image"
+        /></button
+      ><button class="mobile__menu-item">
+        <img
+          src="./svg/mobile_user.svg"
+          alt="Иконка домашней страниы"
+          class="mobile__menu-image"
+        />
+      </button>
+    </menu>
+    <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/search.js"></script>
+    <script src="./scripts/globalHandlers.js"></script>
+
+    <template id="card-template">
+      <li class="card-list__item">
+        <article class="card" data-id="">
+          <div class="card__image-wrapper">
+            <img src="" alt="Изображение товара" class="card__image" />
+          </div>
+          <h2 class="card__title"></h2>
+          <div class="card__text minimize"></div>
+          <div class="card__prices">
+            <p class="card__sale-price"></p>
+            <p class="card__price"></p>
+            <p class="card__sale"></p>
+          </div>
+          <div class="card__shop-info">
+            <img src="" alt="Иконка магазина" class="card__shop-image" />
+            <p class="card__shop-name"></p>
+          </div>
+          <a href="" class="card__product-btn" target="_blank"
+            >Перейти к товару</a
+          >
+        </article>
+      </li>
+    </template>
+    <template id="mobile-card-template">
+      <li class="card-list__item">
+        <article class="card" data-id="">
+          <div class="card__image-wrapper">
+            <img
+              src=""
+              alt="Изображение товара"
+              class="card__image"
+              loading="lazy"
+            />
+          </div>
+          <h2 class="card__title minimize"></h2>
+          <a href="" class="card__product-btn" target="_blank">К товару</a>
+          <div class="card__shop-info">
+            <p class="card__shop-name"></p>
+            <img
+              src=""
+              alt="Иконка магазина"
+              class="card__shop-image"
+              loading="lazy"
+            />
+          </div>
+          <div class="card__prices">
+            <p class="card__sale-price"></p>
+            <p class="card__price"></p>
+            <p class="card__sale"></p>
+          </div>
+        </article>
+      </li>
+    </template>
+    <template id="mobile-product-card"
+      ><div class="product-card__layout content-section">
+        <article class="product-card" data-id="">
+          <div class="product-card__head-wrapper">
+            <div class="product-card__image-wrapper">
+              <img
+                src=""
+                alt="Изображение товара"
+                class="product-card__image"
+              />
+              <div class="product-card__image-slider-wrapper"></div>
+            </div>
+            <h2 class="product-card__title"></h2>
+          </div>
+          <div class="product-card__prices">
+            <p class="product-card__sale-price"></p>
+            <p class="product-card__sale"></p>
+            <p class="product-card__price"></p>
+          </div>
+          <div class="product-card__text">
+            <h3 class="product-card__features-title">Особенности товара</h3>
+            <div class="product-card_description"></div>
+            <div class="product-card__show-btn_container">
+              <button class="product-card__show-btn">
+                <span>Развернуть</span>
+                <img
+                  src="./svg/show_more.svg"
+                  alt="Стрелка"
+                  class="product-card__show-image"
+                />
+              </button>
+            </div>
+          </div>
+          <div class="product-card__shop-info">
+            <img
+              src=""
+              alt="Иконка магазина"
+              class="product-card__shop-image"
+            />
+            <div class="product-card__shop-name"></div>
+            <button class="product-card__shop-btn" type="button">
+              <img
+                src="./svg/shop.svg"
+                alt="Иконка магазина"
+                class="product-card__shop-btn-image"
+              />
+            </button>
+          </div>
+        </article>
+      </div>
+      <section class="similar-products content-section">
+        <h2 class="similar-products__title">Похожие товары</h2>
+        <ul class="similar-products-list">
+          <li class="similar-products-item">
+            <article class="similar-products__card">
+              <img
+                src="./images/similar.png"
+                alt="Изображение похожего товара"
+                class="similar-products__image"
+              />
+              <div class="similar-products__prices">
+                <p class="similar-products__sale-price">20 000 ₽</p>
+                <p class="similar-products__price">30 000 ₽</p>
+                <p class="similar-products__sale">90%</p>
+              </div>
+              <p class="similar-products__text">
+                Супер маска брокколи для хорошего сна
+              </p>
+            </article>
+          </li>
+          <li class="similar-products-item">
+            <article class="similar-products__card">
+              <img
+                src="./images/similar.png"
+                alt="Изображение похожего товара"
+                class="similar-products__image"
+              />
+              <div class="similar-products__prices">
+                <p class="similar-products__sale-price">20 000 ₽</p>
+                <p class="similar-products__price">30 000 ₽</p>
+                <p class="similar-products__sale">90%</p>
+              </div>
+              <p class="similar-products__text">
+                Супер маска брокколи для хорошего сна
+              </p>
+            </article>
+          </li>
+          <li class="similar-products-item">
+            <article class="similar-products__card">
+              <img
+                src="./images/similar.png"
+                alt="Изображение похожего товара"
+                class="similar-products__image"
+              />
+              <div class="similar-products__prices">
+                <p class="similar-products__sale-price">20 000 ₽</p>
+                <p class="similar-products__price">30 000 ₽</p>
+                <p class="similar-products__sale">90%</p>
+              </div>
+              <p class="similar-products__text">
+                Супер маска брокколи для хорошего сна
+              </p>
+            </article>
+          </li>
+          <li class="similar-products-item">
+            <article class="similar-products__card">
+              <img
+                src="./images/similar.png"
+                alt="Изображение похожего товара"
+                class="similar-products__image"
+              />
+              <div class="similar-products__prices">
+                <p class="similar-products__sale-price">20 000 ₽</p>
+                <p class="similar-products__price">30 000 ₽</p>
+                <p class="similar-products__sale">90%</p>
+              </div>
+              <p class="similar-products__text">
+                Супер маска брокколи для хорошего сна
+              </p>
+            </article>
+          </li>
+          <li class="similar-products-item">
+            <article class="similar-products__card">
+              <img
+                src="./images/similar.png"
+                alt="Изображение похожего товара"
+                class="similar-products__image"
+              />
+              <div class="similar-products__prices">
+                <p class="similar-products__sale-price">20 000 ₽</p>
+                <p class="similar-products__price">30 000 ₽</p>
+                <p class="similar-products__sale">90%</p>
+              </div>
+              <p class="similar-products__text">
+                Супер маска брокколи для хорошего сна
+              </p>
+            </article>
+          </li>
+        </ul>
+      </section>
+      <div class="product-card__product-info">
+        <a href="" class="product-card__product-btn" target="_blank"
+          >Перейти к товару</a
+        >
+      </div>
+    </template>
+    <template id="tablet-product-card"
+      ><div class="product-card__layout">
+        <article class="product-card" data-id="">
+          <div class="product-card__image-wrapper">
+            <img src="" alt="Изображение товара" class="product-card__image" />
+            <div class="product-card__image-slider-wrapper"></div>
+          </div>
+          <div class="product-card__info">
+            <h2 class="product-card__title"></h2>
+            <div class="product-card_description"></div>
+          </div>
+          <div class="product-card__product-info">
+            <div class="product-card__prices">
+              <p class="product-card__sale-price"></p>
+              <p class="product-card__sale"></p>
+              <p class="product-card__price"></p>
+            </div>
+            <a href="" class="product-card__product-btn" target="_blank"
+              >Перейти к товару</a
+            >
+          </div>
+          <div class="product-card__shop-info">
+            <img
+              src=""
+              alt="Иконка магазина"
+              class="product-card__shop-image"
+            />
+            <button class="product-card__shop-btn" type="button">
+              Все товары магазина
+            </button>
+          </div>
+          <h3 class="product-card__features-title">Особенности товара</h3>
+          <div class="product-card__features-text"></div>
+          <button type="button" class="product-card__favorite">
+            <img
+              src="./svg/bookmark.svg"
+              alt="Поместить в закладки"
+              class="product-card__favorite-image"
+            />
+          </button>
+        </article>
+      </div>
+    </template>
+    <template id="product-card">
+      <div class="product-card__layout">
+        <article class="product-card" data-id="">
+          <div class="product-card__image-wrapper">
+            <img src="" alt="Картинка товара" class="product-card__image" />
+            <div class="product-card__image-slider-wrapper"></div>
+          </div>
+          <div class="product-card__info">
+            <h2 class="product-card__title"></h2>
+            <div class="product-card_description"></div>
+          </div>
+          <h3 class="product-card__features-title">Особенности товара</h3>
+          <div class="product-card__features-text"></div>
+          <button type="button" class="product-card__favorite">
+            <img
+              src="./svg/bookmark.svg"
+              alt="Поместить в закладки"
+              class="product-card__favorite-image"
+            />
+          </button>
+        </article>
+      </div>
+      <aside class="product-card__aside-info">
+        <div class="product-card__product-info">
+          <div class="product-card__prices">
+            <p class="product-card__sale-price"></p>
+            <p class="product-card__sale"></p>
+            <p class="product-card__price"></p>
+          </div>
+          <a href="" class="product-card__product-btn" target="_blank"
+            >Перейти к товару</a
+          >
+        </div>
+        <div class="product-card__shop-info">
+          <img src="" alt="Иконка магазина" class="product-card__shop-image" />
+          <button class="product-card__shop-btn" type="button">
+            Все товары магазина
+          </button>
+        </div>
+      </aside>
+    </template>
+  </body>
+</html>

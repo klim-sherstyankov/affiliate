@@ -11,6 +11,13 @@ class ItemsFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
+        $shop = new Shop();
+        $shop->setUrl('https://www.letu.ru/');
+        $shop->setImage('https://www.letu.ru/common/img/logo/letu-logo.svg');
+        $shop->setName('Летуаль');
+        $shop->setDescription('Летуаль');
+        $manager->persist($shop);
+
         $product = new Items();
         $product->setUrl('https://www.letu.ru/product/lalique-encre-noire/1281');
         $product->setDescription('Чисто мужской классический Encre Noire — настоящий гимн аристократизму и ментальной зрелости. Представитель мужского пола, выбирающий древесный аромат от LALIQUE, уверен в себе, привлекает благородством и чувством стиля.
@@ -24,15 +31,95 @@ class ItemsFixtures extends Fixture
         $product->setPriceOffPercent(40);
         $product->setShortName('LALIQUE Encre Noire');
         $product->setImage('https://www.letu.ru/common/img/pim/2023/09/EX_0389937b-6cf0-4ffd-bc46-fc368b99e9ce.jpg');
-        $product->setShopName('Летуаль');
+        $product->setShopName($shop->getName());
         $product->setSalePrice(8299);
+        $product->setShopId($shop);
+        $manager->persist($product);
+
+        $product = new Items();
+        $product->setUrl('https://www.letu.ru/product/trussardi-my-land/2600010');
+        $product->setDescription('Мужской аромат TRUSSARDI My Land создал в 2012 году итальянский парфюмер Alexandra Kosinski. Для создания туалетной воды он выбрал составляющие ингредиенты, принадлежащие к фужерной группе. С ней ассоциируются свежесть девственной природы, дождь и кристально чистый воздух.
+
+Раскрывается аромат, созданный для мужчин, верхними нотами, которые представляют бергамот и зеленый мандарин. Они превосходно выполняют вступительную роль. Неспешно присоединяются к нему ноты сердца - калон, лаванда и фиалка. Душистые вещества, набирая свою силу, демонстрируют насыщенность аромата, дополняя и гармонично оттеняя друг друга.
+
+Для удержания фруктово-цветочного оттенка и сохранения шлейфа вступают в свои права ноты базы. Они включают стойкие, яркие соединения, которыми обладают кожа, ветивер, бобы тонка и кашмирское дерево. В триаде аромата ноты, сменяя друг друга, оставляют свой волнующий след.
+
+Аромат для мужчин TRUSSARDI My Land ассоциируется с яркой чувственностью и мужественностью. Он освежает и бодрит, что немаловажно для успешных и активных людей. Итальянскому парфюму свойственны изысканность и элегантность. Он оформлен в солидный стеклянный флакон с темно-коричневой окантовкой по периметру и с золотистым дозатором.');
+        $product->setPrice(5599);
+        $product->setPriceOffPercent(20);
+        $product->setShortName('TRUSSARDI My Land');
+        $product->setImage('https://www.letu.ru/common/img/pim/2023/07/EX_dd4e9433-9eae-47a4-b0f2-c0cbd1a0fd9a.jpg');
+        $product->setShopName($shop->getName());
+        $product->setSalePrice(6599);
+        $product->setShopId($shop);
+        $manager->persist($product);
+
+        $product = new Items();
+        $product->setUrl('https://www.letu.ru/product/payot-dezodorant-rolikovyi-dlya-muzhchin-24-chasovogo-deistviya/115600008');
+        $product->setDescription('Дезодорант-антиперспирант регулирует потоотделение и нейтрализует неприятный запах, поглощает влагу и сохраняет ощущение свежести на протяжение 24 часов. Содержит 94% ингредиентов натурального происхождения. Квасцы сужают поры и потовые железы, естественным образом ограничивая потоотделение, нейтрализуют бактерии, вызывающие неприятный запах. Экстракт смитсонита богат цинком, обладающим себорегулирующими и противовоспалительными свойствами. Освежающая и невесомая быстро впитывающаяся текстура, сухая на ощупь, не оставляет следов на одежде. Аромат линии Optimale со свежими и бодрящими древесными нотами.');
+        $product->setPrice(1249);
+        $product->setPriceOffPercent(51);
+        $product->setShortName('PAYOT Дезодорант роликовый для мужчин 24-часового действия Optimale');
+        $product->setImage('https://www.letu.ru/common/img/pim/2023/06/EX_4a17e4bd-da10-4e9c-b776-157b0e5f9378.jpg');
+        $product->setShopName($shop->getName());
+        $product->setSalePrice(2549);
+        $product->setShopId($shop);
+        $manager->persist($product);
+
+        $product = new Items();
+        $product->setUrl('https://www.letu.ru/product/dr-sea-krem-lifting-muzhskoi-dlya-litsa-i-zony-vokrug-glaz-ultra-uvlazhnyayushchii-s-gialuronovoi-kislotoi/145900023');
+        $product->setDescription('Крем борется с признаками старения и усталости, восстанавливая баланс кожи благодаря входящим в него компонентам. Продукт создан специально для особых запросов мужской кожи. Эффективные активные ингредиенты помогают противостоять последствиям стрессовых ситуаций, ежедневного бритья и загрязнений окружающей среды. Гиалуроновая кислота в составе обеспечивает максимальное увлажнение и насыщение кожи, предотвращая появление сухости и стянутости. Притягивает и накапливает влагу на поверхности кожи, предотвращая испарение воды и обезвоживание. Масло авокадо содержит комплекс жирных кислот, схожий по составу с липидной мантией кожи. Он восстанавливает барьерные свойства и устраняет сухость, стянутость, шелушение. Экстракт гамамелиса тонизирует кожу, а также уменьшает секрецию сальных желез. Экстракт виноградной косточки обладает антиоксидантным действием, помогает стабилизировать выработку коллагена и эластина, отвечающих за молодость и упругость кожи. Крем идеально подходит для ухода за лицом и деликатной области вокруг глаз для всех типов кожи.');
+        $product->setPrice(1260);
+        $product->setPriceOffPercent(40);
+        $product->setShortName('DR. SEA Крем-лифтинг мужской для лица и зоны вокруг глаз ультра увлажняющий с гиалуроновой кислотой');
+        $product->setImage('https://www.letu.ru/common/img/marketplace/2024/07/7d5c3462-cadb-4090-81e1-23a97de4239a.jpg');
+        $product->setShopName($shop->getName());
+        $product->setSalePrice(2100);
+        $product->setShopId($shop);
+        $manager->persist($product);
+        $product->setShopId($shop);
+        $manager->persist($product);
 
         $shop = new Shop();
-        $shop->setUrl('https://www.letu.ru/');
-        $shop->setImage('https://www.letu.ru/common/img/logo/letu-logo.svg');
-        $shop->setName('letu');
-        $shop->setDescription('letu');
+        $shop->setUrl('https://www.wildberries.ru/');
+        $shop->setImage('https://static-basket-01.wbbasket.ru/vol0/i/v3/header/wb-logo_distinction_2024.png');
+        $shop->setName('wildberries');
+        $shop->setDescription('wildberries');
         $manager->persist($shop);
+
+        $product = new Items();
+        $product->setUrl('https://www.wildberries.ru/catalog/228116207/detail.aspx');
+        $product->setDescription('Монитор Xiaomi Redmi Surface Display 34 (G34WQ) (C34WQBA-RG) – это высококачественное устройство, которое станет незаменимым помощником в работе и развлечениях. Монитор обладает впечатляющим разрешением 3440x1440 пикселей, что обеспечивает четкое и яркое изображение. Благодаря соотношению сторон экрана 21:9, вы сможете наслаждаться широкими углами обзора и детализированным изображением. Монитор ксиоми оснащен изогнутым экраном, что создает эффект погружения и позволяет полностью погрузиться в игровой процесс. Время отклика составляет всего 1 мс, что обеспечивает плавность и быстроту реакции на действия пользователя. Монитор ксяоми поддерживает игровую функцию, что делает его отличным выбором для геймеров. Версия CN означает, что игровой монитор имеет все необходимые сертификаты качества и безопасности. В целом, компьютерный монитор – это надежный, функциональный и стильный выбор для тех, кто ценит качество и комфорт. Благодаря FreeSync Premium частота кадров компьютерной видеокарты и монитора поддерживается в реальном времени, что позволяет уменьшить разрывы изображения и задержки в динамических средах. Это обеспечивает плавность и стабильность в критические игровые моменты. Широкая цветовая гамма 95% DCI-P3 и 100% sRGB монитора для компьютера обеспечивает широкий спектр цветов, чтобы оживить ваши изображения с беспрецедентной насыщенностью и реалистичностью. Монитор редми имеет гибкую регулировку по высоте и углу наклона и может быть установлен на стене, обеспечивая вам комфорт в любом положении сиденья. идеальный выбор для ценителей качественного гейминга. Аксессуары для компьютера, такие как этот монитор, помогут вам окунуться в захватывающий мир игр. Благодаря высокой скорости обновления экрана 180Гц, каждое движение на экране будет реалистичным и плавным. Он идеально подходит как для профессиональных геймеров, так и для любителей видеоигр. Заказывайте мощный монитор Редми для мужчин геймеров, сыновей, подростков на любой праздник!');
+        $product->setPrice(19943);
+        $product->setPriceOffPercent(50);
+        $product->setShortName('Монитор для ПК Redmi Display 34" 4K 180 Гц изогнутый');
+        $product->setImage('https://basket-15.wbbasket.ru/vol2281/part228116/228116207/images/c246x328/1.webp');
+        $product->setShopName($shop->getName());
+        $product->setSalePrice(40990);
+        $product->setShopId($shop);
+        $manager->persist($product);
+
+        $product = new Items();
+        $product->setUrl('https://www.wildberries.ru/catalog/162520657/detail.aspx');
+        $product->setDescription('Мужской шариковый дезодорант с ароматом ветивера Натуралистика предназначен для максимальной защиты и свежести. Использование антиперспиранта контролирует чрезмерное потоотделение даже при экстремальных физических нагрузках и обеспечивает: длительную защиту от пота и запаха; увлажняет и успокаивает кожу; не блокирует поры; кожа дышит; эффективен при активном движении и занятии спортом; блокирует размножение бактерий. Шарик предотвращает появление неприятного запаха до 48 часов, не вызывает раздражений и поддерживает естественный PH кожи. Ролик для мужчин');
+        $product->setPrice(108);
+        $product->setPriceOffPercent(50);
+        $product->setShortName('Шариковый антиперспирант Ветивер, 50 мл');
+        $product->setImage('https://basket-15.wbbasket.ru/vol2281/part228116/228116207/images/c246x328/1.webp');
+        $product->setShopName($shop->getName());
+        $product->setSalePrice(279);
+        $product->setShopId($shop);
+        $manager->persist($product);
+
+        $product = new Items();
+        $product->setUrl('https://www.wildberries.ru/catalog/234424770/detail.aspx');
+        $product->setDescription('Смарт-часы комплектуются 1,5-дюймовым экраном AMOLED LTPO с сапфировым стеклом. Корпус — титан аэрокосмического класса. Отличием HUAWEI WATCH 4 Pro от предыдущих серий являются ультратонкие рамки и широкий угол обзора. Устройство поддерживает подключение LTE с поддержкой функции eSIM — пользователь может совершать звонки и SMS. При полной зарядке Huawei Watch 4 Pro смогут обеспечить до 4-5 дней автономной работы.');
+        $product->setPrice(24210);
+        $product->setPriceOffPercent(45);
+        $product->setShortName('Умные часы WATCH 4 Pro Medes-L19L LTE 2GB+32GB, Коричневый');
+        $product->setImage('https://basket-15.wbbasket.ru/vol2344/part234424/234424770/images/big/1.webp');
+        $product->setShopName($shop->getName());
+        $product->setSalePrice(39990);
         $product->setShopId($shop);
         $manager->persist($product);
 

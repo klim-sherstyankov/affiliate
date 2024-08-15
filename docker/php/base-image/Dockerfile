@@ -1,4 +1,4 @@
-FROM php:8.3-fpm as build
+FROM php:8.2-fpm as build
 
 #set timezone
 ENV TIMEZONE=Europe/Moscow

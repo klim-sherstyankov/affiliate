@@ -20,5 +20,21 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+    App\Command\ClickHouseMakeClickMigrateCommand:
+        arguments:
+            $clickhouseConnection: '@doctrine.dbal.clickhouse_connection'
+        tags:
+            - { name: 'console.command' }
+
+    App\Command\ClickHouseDeleteClickMigrateCommand:
+        arguments:
+            $clickhouseConnection: '@doctrine.dbal.clickhouse_connection'
+        tags:
+            - { name: 'console.command' }
+
+    App\Service\ClickService:
+        arguments:
+            $clickhouseConnection: '@doctrine.dbal.clickhouse_connection'
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

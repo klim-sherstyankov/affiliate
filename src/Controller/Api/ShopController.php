@@ -41,6 +41,12 @@ class ShopController extends AbstractController
         schema: new OA\Schema(type: 'integer')
     )]
     #[OA\Parameter(
+        name: 'sort',
+        description: 'sort',
+        in: 'query',
+        schema: new OA\Schema(type: 'json')
+    )]
+    #[OA\Parameter(
         name: 'shopId',
         description: 'shop Id',
         in: 'query',

@@ -12,12 +12,17 @@ class ItemsService
     {
     }
 
+    /**
+     * @throws \JsonException
+     */
     public function getItems(Request $request): array
     {
         $data = [];
         $limit = $request->get('limit', 30);
         $offset = $request->get('offset', 0);
-        $items = $this->em->getRepository(Items::class)->findBy([], ['id' => 'DESC'], $limit, $offset);
+        $sortString = (string) $request->get('sort');
+        $sort = (array) json_decode($sortString, false);
+        $items = $this->em->getRepository(Items::class)->findBy([], $sort, $limit, $offset);
 
         /** @var Items $item */
         foreach ($items as $item) {
@@ -32,9 +37,11 @@ class ItemsService
         $data = [];
         $limit = $request->get('limit', 30);
         $offset = $request->get('offset', 0);
+        $sortString = (string) $request->get('sort');
+        $sort = (array) json_decode($sortString, false);
         $shopId = $request->get('shopId');
 
-        $items = $this->em->getRepository(Items::class)->findBy(['shopId' => $shopId], ['id' => 'DESC'], $limit, $offset);
+        $items = $this->em->getRepository(Items::class)->findBy(['shopId' => $shopId], $sort, $limit, $offset);
 
         /** @var Items $item */
         foreach ($items as $item) {

@@ -33,6 +33,12 @@ class ItemController extends AbstractController
         in: 'query',
         schema: new OA\Schema(type: 'integer')
     )]
+    #[OA\Parameter(
+        name: 'sort',
+        description: 'sort',
+        in: 'query',
+        schema: new OA\Schema(type: 'json')
+    )]
     public function getItems(Request $request): Response
     {
         return $this->json($this->itemsService->getItems($request));

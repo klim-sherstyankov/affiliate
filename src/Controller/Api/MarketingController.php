@@ -2,6 +2,7 @@
 
 namespace App\Controller\Api;
 
+use App\Service\ClickService;
 use App\Service\MarketingService;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Exception;
@@ -14,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MarketingController extends AbstractController
 {
-    public function __construct(private MarketingService $marketingService)
+    public function __construct(private MarketingService $marketingService, private ClickService $clickService)
     {
     }
 
@@ -45,12 +46,20 @@ class MarketingController extends AbstractController
         return new JsonResponse(['url' => $destUrl], $status);
     }
 
-    #[Route('/api/marketing/all', name: 'app_marketing2', methods: ['GET'])]
-    public function clickInfo(Connection $clickhouseConnection): Response
+    #[Route('/api/marketing/analytic/{sourceUrl}', name: 'app_analytic', methods: ['GET'])]
+    #[OA\Response(
+        response: 200,
+        description: 'Get url'
+    )]
+    #[OA\Parameter(
+        name: 'source_url',
+        description: 'source url',
+        in: 'query',
+        schema: new OA\Schema(type: 'string')
+    )]
+    public function clickInfo(Connection $clickhouseConnection, string $sourceUrl): Response
     {
-        $sql = 'SELECT * FROM click LIMIT 10';
-        $statement = $clickhouseConnection->executeQuery($sql);
-        $results = $statement->fetchAllAssociative();
+        $results = $this->clickService->getData($sourceUrl);
 
         return $this->json($results);
     }

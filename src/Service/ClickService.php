@@ -21,4 +21,13 @@ class ClickService
     {
         $this->clickhouseConnection->insert('click', $data);
     }
+
+    public function getData(string $sourceUrl): array
+    {
+        $qb = $this->clickhouseConnection->createQueryBuilder();
+        $stmt = $qb->select('* FROM click WHERE source_url = :sourceUrl');
+        $stmt->setParameter('sourceUrl', $sourceUrl);
+
+        return $stmt->fetchAllAssociative();
+    }
 }

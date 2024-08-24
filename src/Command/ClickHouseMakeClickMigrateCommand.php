@@ -34,6 +34,7 @@ class ClickHouseMakeClickMigrateCommand extends Command
             CREATE TABLE click (
                 user_id UInt32,
                 session_id UUID,
+                source_url String,
                 url String,
                 referer String,
                 user_agent String,

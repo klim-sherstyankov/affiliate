@@ -2,42 +2,47 @@
 
 namespace App\Controller\Api;
 
-use App\Service\ClickService;
+use App\Service\MarketingService;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Exception;
+use OpenApi\Attributes as OA;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class MarketingController extends AbstractController
 {
-    public function __construct(private ClickService $clickService)
+    public function __construct(private MarketingService $marketingService)
     {
     }
 
     /**
      * @throws Exception
      */
-    #[Route('/api/marketing/click', name: 'click', methods: ['GET'])]
-    public function click(Request $request): Response
+    #[Route('/api/marketing/redirect/{sourceUrl}', name: 'redirecting', methods: ['GET'])]
+    #[OA\Response(
+        response: 200,
+        description: 'Get url'
+    )]
+    #[OA\Parameter(
+        name: 'source_url',
+        description: 'source url',
+        in: 'query',
+        schema: new OA\Schema(type: 'string')
+    )]
+    public function redirecting(Request $request, string $sourceUrl): JsonResponse
     {
-        $data = [
-            'user_id' => $request->get('user_id'),
-            'session_id' => $request->get('session_id'),
-            'url' => $request->get('url'),
-            'referer' => $request->get('referer'),
-            'user_agent' => $request->get('user_agent'),
-            'ip' => $request->get('ip'),
-            'method' => $request->getMethod(),
-            'status_code' => $request->get('status_code'),
-            'response_time' => $request->get('response_time'),
-            'created_at' => (new \DateTime())->format('Y-m-d H:i:s'),
-        ];
+        $status = Response::HTTP_NOT_FOUND;
+        $destUrl = $this->marketingService->getDestUrl($sourceUrl);
 
-        $this->clickService->insertClickData($data);
+        if (null !== $destUrl) {
+            $status = Response::HTTP_OK;
+            $this->marketingService->click($request, $sourceUrl);
+        }
 
-        return new Response('Click data inserted successfully', Response::HTTP_OK);
+        return new JsonResponse(['url' => $destUrl], $status);
     }
 
     #[Route('/api/marketing/all', name: 'app_marketing2', methods: ['GET'])]

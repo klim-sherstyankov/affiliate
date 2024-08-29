@@ -22,7 +22,7 @@ class MarketingController extends AbstractController
     /**
      * @throws Exception
      */
-    #[Route('/api/marketing/redirect/{sourceUrl}', name: 'redirecting', methods: ['GET'])]
+    #[Route('/visit/{sourceUrl}', name: 'visit', methods: ['GET'])]
     #[OA\Response(
         response: 200,
         description: 'Get url'
@@ -46,7 +46,7 @@ class MarketingController extends AbstractController
         return new JsonResponse(['url' => $destUrl], $status);
     }
 
-    #[Route('/api/marketing/analytic/{sourceUrl}', name: 'app_analytic', methods: ['GET'])]
+    #[Route('/visit/analytic/{sourceUrl}', name: 'app_analytic', methods: ['GET'])]
     #[OA\Response(
         response: 200,
         description: 'Get url'

@@ -23,7 +23,7 @@ class MarketingService
             'user_id' => $request->get('user_id'),
             'session_id' => $request->get('session_id'),
             'url' => $request->get('url'),
-            'referer' => $request->get('referer'),
+            'referer' => $request->headers->get('referer'),
             'user_agent' => $request->get('user_agent'),
             'ip' => $request->get('ip'),
             'method' => $request->getMethod(),

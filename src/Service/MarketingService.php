@@ -24,7 +24,7 @@ class MarketingService
             'session_id' => $request->get('session_id'),
             'url' => $request->get('url'),
             'referer' => $request->headers->get('referer'),
-            'user_agent' => $request->get('user_agent'),
+            'user_agent' => $request->headers->get('user_agent'),
             'ip' => $request->get('ip'),
             'method' => $request->getMethod(),
             'status_code' => $request->get('status_code'),

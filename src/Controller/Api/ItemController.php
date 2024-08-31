@@ -39,6 +39,12 @@ class ItemController extends AbstractController
         in: 'query',
         schema: new OA\Schema(type: 'json')
     )]
+    #[OA\Parameter(
+        name: 'shop',
+        description: 'filter by shop id',
+        in: 'query',
+        schema: new OA\Schema(type: 'integer')
+    )]
     public function getItems(Request $request): Response
     {
         return $this->json($this->itemsService->getItems($request));

@@ -20,10 +20,11 @@ class ItemsService
         $data = [];
         $limit = $request->get('limit', 30);
         $offset = $request->get('offset', 0);
-        $shop = $request->get('shop', []);
+        $shop = $request->get('shop', null);
         $sortString = (string) $request->get('sort');
+        $criteria = $shop ? ['shopId' => $shop] : [];
         $sort = (array) json_decode($sortString, false);
-        $items = $this->em->getRepository(Items::class)->findBy(['shopId' => $shop], $sort, $limit, $offset);
+        $items = $this->em->getRepository(Items::class)->findBy($criteria, $sort, $limit, $offset);
 
         /** @var Items $item */
         foreach ($items as $item) {

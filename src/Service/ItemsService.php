@@ -20,7 +20,7 @@ class ItemsService
         $data = [];
         $limit = $request->get('limit', 30);
         $offset = $request->get('offset', 0);
-        $shop = $request->get('shop', null);
+        $shop = $request->get('shop');
         $sortString = (string) $request->get('sort');
         $criteria = $shop ? ['shopId' => $shop] : [];
         $sort = (array) json_decode($sortString, false);

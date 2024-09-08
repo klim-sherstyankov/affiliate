@@ -101,6 +101,13 @@ class ScrapeCommand extends Command
                 continue;
             }
 
+            /** @var Items $item */
+            $item = $this->manager->getRepository(Items::class)->findOneBy(['url' => $linkHref]);
+
+            if (null !== $item) {
+                continue;
+            }
+
             $product = new Items();
             $product->setUrl($linkHref);
             $product->setDescription($linkText);

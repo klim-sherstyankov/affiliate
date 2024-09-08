@@ -104,17 +104,16 @@ class ScrapeCommand extends Command
             $product = new Items();
             $product->setUrl($linkHref);
             $product->setDescription($linkText);
-            $product->setPrice($price);
+            $product->setPrice($salePriceText);
             $product->setPriceOffPercent($priceOffPercent);
             $product->setShortName($linkText);
             $product->setImage($img);
             $product->setShopName(null);
-            $product->setSalePrice($salePriceText);
+            $product->setSalePrice($price);
             $product->setShopId(null);
             $this->manager->persist($product);
 
             $this->manager->flush();
-            dd('end');
         }
 
         return Command::SUCCESS;

@@ -26,6 +26,10 @@ services:
         tags:
             - { name: 'console.command' }
 
+    App\Command\ScrapeCommand:
+        tags:
+            - { name: 'console.command' }
+
     App\Command\ClickHouseDeleteClickMigrateCommand:
         arguments:
             $clickhouseConnection: '@doctrine.dbal.clickhouse_connection'
